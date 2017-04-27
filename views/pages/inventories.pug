@@ -1,0 +1,43 @@
+extends ../layout
+
+block content
+	.container
+		.row
+			table.table.table-hover.table-bordered
+				thead
+					tr
+						th 序号
+						th 编号
+						th 名称
+						th 售出
+						th 剩余
+						th 总量						
+						th 商品状态						
+						th 录入者
+						th 录入时间
+						th 更新人					
+						th 更新时间
+						th 操作
+						th 备注
+
+				tbody
+					tr(class="-id-#{item._id}")
+						th 1						
+						td hello
+						td 福田
+						td 10
+						td 20
+						td 30						
+						td 在售
+						//td #{moment(.meta.updateAt).format('MM/DD/YYYY')}
+						td 小明
+						td 2017/04/18
+						td 小红
+						td 2017/04/19		
+						td
+							a(target="_blank", href="/movie/") 查看&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							a(target="_blank", href="/admin/movie/update/") 修改&nbsp;&nbsp;&nbsp;&nbsp;
+							a(target="_blank", href="/admin/movie/update/") 修改
+							//button.btn.btn-danger.del(type="button", data-id="") 删除
+						td 这个库存有点多
+	script(src="/js/admin.js")

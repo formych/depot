@@ -1,0 +1,50 @@
+extends ../layout
+
+block content
+	.container
+		.row
+			.table-responsive
+				table.table.table-hover.table-bordered
+					caption 商品列表
+					thead
+						tr
+							th.text-center 序号
+							th.text-center 编号
+							th.text-center 商品
+							th.text-center 售价(元)
+							th.text-center 数量				
+							th.text-center 总价
+							th.text-center 购买者
+							th.text-center 电话
+							th.text-center 销售人
+							th.text-center 成交日期
+							th.text-center 录入时间													
+							th.text-center 操作
+							th.text-center 备注
+
+					tbody
+						each item, index in outstocks
+							tr(class="item-id-" + item._id)
+								td.text-center #{index + 1}
+								td.text-center #{item._id.toString().substr(-5)}
+								if item.goods
+									td.text-center #{item.goods.name}
+								else
+									td 
+								td.text-center #{item.price}
+								td.text-center #{item.amount}
+								td.text-center #{item.totalPrice}
+								td.text-center #{item.buyer}
+								td.text-center #{item.tel}
+								td.text-center #{item.seller}
+								if item.dealTime
+									td.text-center #{moment(item.dealTime).format('YYYY/M/D')}
+								else
+									td 
+								td.text-center #{moment(item.meta.createTime).format('YYYY/M/D')}								
+								td.text-center
+									a(target="_blank", href="/outstock/update/" + item._id) 更新
+									em &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									button.btn.btn-xs.btn-danger.del(type="button", data-id=item._id) 删除
+								td.text-center #{item.note}
+	script(src="/build/comment.js")

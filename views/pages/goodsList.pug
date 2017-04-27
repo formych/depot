@@ -1,0 +1,38 @@
+extends ../layout
+
+block content
+	.container
+		.row
+			.table-responsive
+				table.table.table-hover.table-bordered
+					caption 商品列表
+					thead
+						tr
+							th.text-center 编号
+							th.text-center 名称
+							th.text-center 种类
+							th.text-center 已售
+							th.text-center 剩余
+							th.text-center 总量
+							th.text-center 商品状态
+							th.text-center 录入时间
+							th.text-center 操作
+							th.text-center 备注
+
+					tbody
+						each item, index in goods
+							tr(class="item-id-" + item._id)
+								td.text-center #{index + 1}
+								td.text-center #{item.name}								
+								td.text-center #{item.category.name}
+								td.text-center #{item.sold}
+								td.text-center #{item.rest}
+								td.text-center #{item.total}
+								td.text-center.text-center #{item.status}
+								td.text-center.text-center #{moment(item.meta.createAt).format('YY/M/D')}
+								td.text-center
+									a(target="_blank", href="/goods/update/" + item._id) 更新
+									em &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									button.btn.btn-xs.btn-danger.del(type="button", data-id=item._id) 删除
+								td.text-center #{item.note}
+	script(src="/build/comment.js")

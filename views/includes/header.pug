@@ -1,0 +1,38 @@
+.container
+	.row
+		.page-header.clearfix
+			a(href="/" target="_blank") 首页
+			em &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			a(href="/category/new" target="_blank") 新增分类
+			em &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			a(href="/category/list" target="_blank") 商品分类
+			em &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			a(href="/goods/new" target="_blank") 新增商品
+			em &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			a(href="/goods/list" target="_blank") 商品列表
+			em &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			a(href="/instock/new" target="_blank") 入库
+			em &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			a(href="/instock/list" target="_blank") 入库列表
+			em &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			a(href="/outstock/new" target="_blank") 出库
+			em &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			a(href="/outstock/list" target="_blank") 出库列表
+			em &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+//- .container
+	.row
+		.page-header.clearfix
+			//- h1 #{title}
+			.col-md-4
+				//- big 产品库
+			.col-md-8
+				form(method="GET", action="/results")
+					.input-group.col-sm-4.pull-right
+						input.form-control(type="text", name="q")
+						span.input-group-btn
+							button.btn.btn-default(type="submit") 搜索
+.navbar.navbar-default.navbar-fixed
+	.container
+		.navbar-header
+			a.navbar-brand #{headerTitle}

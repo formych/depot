@@ -1,0 +1,18 @@
+extends ../layout
+
+block content
+  .container-fluid
+    .row
+      form.form-horizontal(method="post", action="/category")
+        input(type="hidden", name="category[_id]", value=category._id)
+        .form-group
+          label.col-sm-2.control-label(for="inputCatogery") 名称
+          .col-sm-4
+            input#inputTitle.form-control(type="text", name="category[name]", value=category.name, placeholder="商品种类")
+        .form-group
+          label.col-sm-2.control-label(for="inputCatogery") 备注
+          .col-sm-4
+            textarea#inputTitle.form-control(name="category[note]", value=category.note, placeholder="商品种类说明信息") #{category.note}
+        .form-group
+          label.col-sm-offset-2.col-sm-10
+            button.btn.btn-default(type="submit") &nbsp;&nbsp;录&nbsp;&nbsp;&nbsp;&nbsp;入&nbsp;&nbsp;

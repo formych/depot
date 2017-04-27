@@ -1,0 +1,32 @@
+extends ../layout
+
+block content
+	.container
+		.row
+			.table-responsive
+				table.table.table-hover.table-bordered
+					thead
+						tr
+							th.text-center 序号
+							th.text-center 名称
+							th.text-center 录入时间
+							th.text-center 录入人
+							th.text-center 更新时间						
+							th.text-center 更新人
+							th.text-center 备注										
+							th.text-center 操作												
+					tbody
+						each item, index in categories
+							tr(class="item-id-" + item._id)
+								th.text-center #{index + 1}
+								td.text-center #{item.name}				
+								td.text-center #{moment(item.meta.createAt).format('YYYY/M/D')}
+								td.text-center #{item.meta.createBy}
+								td.text-center #{moment(item.meta.updateAt).format('YYYY/M/D')}
+								td.text-center #{item.meta.updateBy}
+								td.text-center #{item.note}							
+								td.text-center
+									a(target="_blank", href="/category/update/" + item._id) 更新
+									em &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									button.btn.btn-xs.btn-danger.del(type="button", data-id=item._id) 删除							
+	script(src="/build/comment.js")

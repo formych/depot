@@ -1,0 +1,52 @@
+extends ../layout
+
+block content
+	.container
+		.row
+			form.form-horizontal(method="post", action="/outstock")
+				input(type="hidden", name="outstock[_id]", value=outstock._id)
+				.form-group
+					label.col-sm-2.control-label(for="inputGoods") 商品
+					.col-sm-3
+						select#inputGoods.form-control(name="outstock[goods]")
+							each item in goods							
+								if outstock.goods && item._id.toString()==outstock.goods.toString()
+									option(value=item._id, selected) #{item.name}
+								else
+									option(value=item._id) #{item.name}					
+				.form-group
+					label.col-sm-2.control-label(for="inputPrice") 售价
+					.col-sm-3
+						input#inputPrice.form-control(type="text", name="outstock[price]", value=outstock.price, placeholder="元(必须数字)")
+					label.col-sm-1.control-label(for="inputAmount") 总量
+					.col-sm-3
+						input#inputTotal.form-control(type="text", name="outstock[amount]", value=outstock.amount, placeholder="数量(必须数字)")
+				.form-group
+					label.col-sm-2.control-label(for="inputTotalPrice") 总价
+					.col-sm-3
+						input#inputTotalPrice.form-control(type="text", name="outstock[totalPrice]", value=outstock.totalPrice, placeholder="元(必须数字)")
+					label.col-sm-1.control-label(for="inputUnit") 单位
+					.col-sm-3
+						input#inputUnit.form-control(type="text", name="outstock[unit]", value=outstock.unit)
+				.form-group
+					label.col-sm-2.control-label(for="inputBuyer") 购买者
+					.col-sm-3
+						input#inputBuyer.form-control(type="text", name="outstock[buyer]", value=outstock.buyer)
+					label.col-sm-1.control-label(for="inputTelphone") 电话
+					.col-sm-3
+						input#inputTelphone.form-control(type="tel", name="outstock[tel]", value=outstock.tel, placeholder="电话号码(必须数字)")
+				.form-group
+					label.col-sm-2.control-label(for="inputSeller") 销售人
+					.col-sm-3
+						input#inputSeller.form-control(type="text", name="outstock[seller]", value=outstock.seller)
+					label.col-sm-1.control-label(for="inputDealTime") 成交日期
+					.col-sm-3
+						input#inputDealTime.form-control(type="date", name="outstock[dealTime]", value=outstock.dealTime)
+				.form-group
+					label.col-sm-2.control-label(for="inputNote") 备注
+					.col-sm-3
+						textarea#inputNote.form-control(type="text", name="outstock[note]" value=outstock.note) #{outstock.note}
+				.form-group
+					.col-sm-offset-2.col-sm-3
+					button.btn.btn-default(type="submit") 录入
+	script(src="/js/admin.js")
